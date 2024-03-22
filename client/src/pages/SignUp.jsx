@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -32,7 +32,7 @@ const SignUp = () => {
     });
     let [loading, setLoading] = useState(false);
     let [error, setError] = useState(false)
-
+    let navigate = useNavigate();
     let handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
@@ -61,6 +61,7 @@ const SignUp = () => {
             if (res.ok) {
                 const data = await res.json();
                 console.log('Sign up successful:', data);
+                navigate('/')
                 toast.success("Sign up successfuly!")
             } else {
                 throw new Error('Sign up failed');
