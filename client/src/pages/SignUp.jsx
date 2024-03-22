@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import FilledInput from '@mui/material/FilledInput';
@@ -15,8 +15,6 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
-import { Link } from '@mui/material';
-
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = React.useState(false);
@@ -26,6 +24,7 @@ const SignUp = () => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
     return (
         <div>
             <div className='p-3 max-w-lg mx-auto'>
@@ -66,8 +65,8 @@ const SignUp = () => {
                     </div>
                 </form>
             </div>
-        </div >
+        </div>
     )
 }
 
-export default SignUp
+export default SignUp;

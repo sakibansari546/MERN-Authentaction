@@ -16,7 +16,7 @@ const Header = () => {
                     <FaSearch className='text-slate-500' />
                 </form>
                 <ul className='flex item-center gap-8'>
-                    <Link to="/home">
+                    <Link to="/">
                         <li className='hidden text-slate-500 sm:inline hover:underline'>Home</li>
                     </Link>
                     <Link to='/about'>
