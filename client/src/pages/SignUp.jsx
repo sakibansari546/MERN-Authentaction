@@ -78,8 +78,8 @@ const SignUp = () => {
     return (
         <div>
             <ToastContainer />
-            <div className='p-3 max-w-lg mx-auto'>
-                <h1 className='text-3xl text-center font-semibold my-7'>Sign Up</h1>
+            <div className='p-3 max-w-lg mx-auto mt-12'>
+                <h1 className='text-3xl text-center font-bold my-7'>Sign Up</h1>
                 <form onSubmit={handleSubmit} action="#" className='flex flex-col  w gap-4 px-6'>
                     <TextField onChange={handleChange} value={formData.username} name="username" className='bg-slate-100 p-3 ' id="username" label="Username" variant="outlined" />
                     <TextField onChange={handleChange} value={formData.email} name="email" className='bg-slate-100 p-3 ' id="email" label="Email" variant="outlined" type='email' />

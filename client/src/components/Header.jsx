@@ -11,10 +11,6 @@ const Header = () => {
                         <span className='text-slate-700'>Lust</span>
                     </h1>
                 </Link>
-                <form className='bg-slate-100 p-2 rounded-lg flex items-center' action="#">
-                    <input className='bg-transparent outline-none w-24 sm:w-64' type="text" placeholder='Search...' />
-                    <FaSearch className='text-slate-500' />
-                </form>
                 <ul className='flex item-center gap-8'>
                     <Link to="/">
                         <li className='hidden text-slate-500 sm:inline hover:underline'>Home</li>
