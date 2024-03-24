@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice.js';
+import GoogAuth from '../components/GoogAuth.jsx';
 
 const SignIn = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -96,6 +97,7 @@ const SignIn = () => {
                             {loading ? "Loading..." : "Sign In"}
                         </Button>
                     </Stack>
+                    <GoogAuth />
                     <div className="flex gap-4 items-center">
                         <p>Don't Have an account</p>
                         <Link to='/sign-up'><span className='text-blue-500 cursor-pointer'>SignUp</span></Link>

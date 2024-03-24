@@ -15,6 +15,7 @@ import Stack from '@mui/material/Stack';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GoogAuth from '../components/GoogAuth';
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = React.useState(false);
@@ -110,6 +111,7 @@ const SignUp = () => {
                             {loading ? "Loading..." : "Sign Up"}
                         </Button>
                     </Stack>
+                    <GoogAuth />
                     <div className="flex gap-4 items-center">
                         <p>Have an account</p>
                         <Link to='/sign-in'>

@@ -50,3 +50,40 @@ export const signin = async (req, res, next) => {
     }
 }
 
+
+
+export const google = async (req, res, next) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        if (user) {
+            // User already exists, generate token and send user data
+            const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+            const { password, ...rest } = user._doc;
+            const expiresIn = 1000 * 60 * 60 * 24 * 7; // 7 days in milliseconds
+            const expirationDate = new Date(Date.now() + expiresIn);
+
+            res.cookie('access_token', token, { httpOnly: true, expires: expirationDate });
+            res.status(200).json(rest);
+        } else {
+            // User doesn't exist, create a new user
+            const generatedPassword = Math.random().toString(36).slice(-8);
+            const hashedPassword = bcrypt.hashSync(generatedPassword, 10);
+            const randomSuffix = Math.floor(Math.random() * 10000); // Generate a random number between 0 and 9999
+            const newUsername = req.body.username.replace(/\s+/g, "").toLowerCase() + randomSuffix;
+            const newUser = new User({ ...req.body, username: newUsername, password: hashedPassword });
+
+            await newUser.save();
+
+            // Generate token for the new user and send user data
+            const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+            const { password, ...rest } = newUser._doc;
+            const expiresIn = 1000 * 60 * 60 * 24 * 7; // 7 days in milliseconds
+            const expirationDate = new Date(Date.now() + expiresIn);
+
+            res.cookie('access_token', token, { httpOnly: true, expires: expirationDate });
+            res.status(200).json(rest);
+        }
+    } catch (error) {
+        next(error);
+    }
+}
